@@ -3,6 +3,18 @@
 /be/node_modules
 /be/build
 
+# dependencies
+/fe/node_modules
+/fe/.pnp
+/fe/.pnp.js
+
+# testing
+/fe/coverage
+
+# production
+/fe/build
+
+
 # Logs
 logs
 *.log
