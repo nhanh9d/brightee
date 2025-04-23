@@ -15,10 +15,20 @@ export class LeadService {
   }
 
   async findOne(id: number): Promise<Lead> {
-    return this.leadRepository.findOne({ where: { id } });
+    const lead = await this.leadRepository.findOne({ where: { id } });
+    if (!lead) {
+      throw new Error('Lead not found');
+    }
+
+    return lead;
   }
 
   async create(lead: LeadInput): Promise<Lead> {
+    const existingLead = await this.leadRepository.findOne({ where: { email: lead.email } });
+    if (existingLead) {
+      throw new Error('Lead with this email already exists');
+    }
+
     return this.leadRepository.save({ ...lead, createdAt: new Date() });
   }
 }
