@@ -1,0 +1,32 @@
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=brightee
+      - POSTGRES_PASSWORD=8kmHeSr0VLt1Rzr
+      - POSTGRES_DB=brrrr
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+
+  be:
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./be:/app
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=brightee
+      - DB_PASSWORD=8kmHeSr0VLt1Rzr
+      - DB_DATABASE=brrrr
+    depends_on:
+      - db
+
