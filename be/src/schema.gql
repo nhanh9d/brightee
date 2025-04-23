@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Lead {
+  id: Float!
+  name: String!
+  email: String!
+  mobile: String!
+  postcode: String!
+  services: [Service!]!
+  createdAt: DateTime!
+}
+
+enum Service {
+  Delivery
+  PickUp
+  Payment
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  leads: [Lead!]!
+  lead(id: Float!): Lead!
+}
+
+type Mutation {
+  addLead(lead: LeadInput!): Lead!
+}
+
+input LeadInput {
+  name: String!
+  email: String!
+  mobile: String!
+  postcode: String!
+  services: [Service!]!
+}
