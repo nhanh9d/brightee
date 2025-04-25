@@ -30,3 +30,15 @@ services:
     depends_on:
       - db
 
+  fe:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    volumes:
+      - ./fe:/app
+    environment:
+      - REACT_APP_API_URL=http://be:3000
+    depends_on:
+      - be

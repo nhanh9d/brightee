@@ -4,11 +4,10 @@ import { AppService } from './app.service';
 import { ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { LeadModule } from './lead/lead.module';
 import { dbConfig } from './config/db.config';
-console.log("🚀 ~ dbConfig:", dbConfig)
 
 //check if this is production or development
 const isProduction = process.env.NODE_ENV === 'production';
